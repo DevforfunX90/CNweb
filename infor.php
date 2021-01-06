@@ -10,9 +10,9 @@
         <h3 class="title_sidebar-name"><span class="spanFirtName">Daniel</span> Stark</h3>
         <div class="badges badge--gray">Creator Star</div>
         <div class="social">
-            <a href="" class="social-link"><i class="font-icon fab fa-facebook-f"></i></a>
-            <a href="" class="social-link"><i class="font-icon fab fa-instagram"></i></a>
-            <a href="" class="social-link"><i class="font-icon fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/duyet.tran.9678067/" class="social-link"><i class="font-icon fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/neox212/" class="social-link"><i class="font-icon fab fa-instagram"></i></a>
+            <a href="https://github.com/DevforfunX90" class="social-link"><i class="font-icon fab fa-github"></i></a>
         </div>
     </div>
     <ul class="contactBlock">

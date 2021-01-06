@@ -8,16 +8,10 @@
     <?php 
         require_once './education.php';
         require_once './experience.php';
+        require_once './box-Skills.php';
     ?>
 
-    <div class="section">
-        <div class="mySkills">
-            <h2 class="mySkills">My Skills</h2>
-            <div class="boxSkills">
-                
-            </div>
-        </div>
-    </div>
+    
 </div>
 <?php
     require_once './footer.php';
