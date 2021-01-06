@@ -9,7 +9,15 @@
                 <span class="name-skill" value="Web Design">Web Design</span>
                 <div class="progess">
                     <div class="progess-bar">
-                        <span class="percent-skill" value="80">80%</span>
+                        <span class="percent-skill" data-value="80%">80%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill">
+                <span class="name-skill" value="Web Design">Graphic </span>
+                <div class="progess">
+                    <div class="progess-bar">
+                        <span class="percent-skill" data-value="70%">70%</span>
                     </div>
                 </div>
             </div>
@@ -17,7 +25,7 @@
                 <span class="name-skill" value="Web Design">HTML</span>
                 <div class="progess">
                     <div class="progess-bar">
-                        <span class="percent-skill" value="70">70%</span>
+                        <span class="percent-skill" data-value="90%">90%</span>
                     </div>
                 </div>
             </div>
@@ -30,17 +38,22 @@
 // let percentSkill = document.querySelector(".percent-skill");
 // console.log(percentSkill.getAttribute("value"));
 // console.log(NameSkill.getAttribute("value"))
-window.addEventListener("load",async ()=>{
-  let progessBars = document.querySelector(".progess-bar");
-  let value =["80%","70%"];
-  console.log('hello')
-//   Array.prototype.forEach.call(progessBars,(progess,index)=>{
-//       progess.style.width =value[index]
-//       console.log('hello')
-//   })
-await progessBars.forEach((progess,index)=>{
-    progess.style.width =value[index]
-})
+window.addEventListener("load", () => {
+    let progessBars = document.querySelectorAll(".progess-bar");
+    // let values = document.querySelectorAll(".percent-skill")
+    // let Arr=[]
+    
+    // values.forEach((Arr,index)=>{
+    //     Arr.push(values.getAttribute("data-value"))
+    // })
+    // console.log(values.value)
+    
+    
+    let val = ["80%","70%","90%"];
+    
+    progessBars.forEach((progess, index) => {
+        progess.style.width = val[index]
+    })
 
 })
 </script>

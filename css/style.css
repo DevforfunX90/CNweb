@@ -305,7 +305,7 @@ polygon{
 }
 
 .content-about{
-    display: none;
+    /* display: none; */
 }
 .content-resume{
     /* display: none; */
