@@ -116,7 +116,7 @@ ul{
     background-color: #F5F8F9;
     border-radius: 30px;
     padding: 2.5rem 1.3rem;
-    /* width: 17.5rem; */
+    height: 100%;
     text-align: center;
     /* position: sticky!important; */
     /* top: 0; */
@@ -290,7 +290,7 @@ polygon{
     background-color: #F5F8F9;
     border-radius: 0 0 30px 30px;
     height: 100%;
-    padding: 2.5rem 1.3rem;
+    
     text-align: center;
     
 }
