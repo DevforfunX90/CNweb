@@ -21,7 +21,7 @@ function showInfor(first_name, last_name, birthday, address, phone, position, gm
         `
           <div class="stickyColumn">
           <div class="avartar">
-              <img src="${image}" alt="" class="img1">
+              <img src="../img/${image}" alt="" class="img1">
           </div>
           <div class="textCenter">
               <h3 class="title_sidebar-name"><span class="spanFirtName">${first_name}</span> ${last_name}</h3>
