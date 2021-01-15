@@ -3,7 +3,7 @@
     header('Access-Control-Allow-Origin: *');
 
     include_once '../../config/Database.php';
-    include_once '../../model/infor.php';
+    include_once '../../model/doing.php';
 
     //
     $database = new Database();
@@ -20,37 +20,29 @@
     //chekc if any posts
 
     if($num >0) {
-        $infor_arr = array();
-        $infor_arr['data'] =array();
+        $arr = array();
+        $arr['data'] =array();
         
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
 
-            $infor_item = array(
+            $item = array(
+                'id_introduce' => $id_content,
                 'id' => $id,
-                'first_name' => $first_name,
-                'last_name' => $last_name,
-                'birthday' => $birthday,
-                'address' =>$address,
-                'phone' => $phone,
-                'position' => $position,
-                'gmail' => $gmail,
-                'skype' => $skype,
-                'facebook' => $facebook,
-                'git' => $git,
-                // 'instargram' => $instargram,
+                'name' => $name,
+                'description' => $desscription,
                 'image' => $image
             );
 
             // push to "data"
-            array_push($infor_arr['data'],$infor_item);
+            array_push($arr['data'],$item);
+            // echo ($infor_arr);
+        }
+        
 
             // turn to json & output
 
-            
-            // echo ($infor_arr);
-        }
-        echo json_encode($infor_arr);
+        echo json_encode($arr);
     }
     else{
         echo json_encode(
