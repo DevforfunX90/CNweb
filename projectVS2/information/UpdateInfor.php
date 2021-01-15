@@ -14,7 +14,7 @@ if(isset($_GET['id'])){
         $img = $_FILES['img']['name'];
         
         // basename show tail jpg or png ,...
-        $target = "img/".basename($img);
+        $target = "../img/".basename($img);
         // get all submit data from the form
         
         $position = $_POST['position'];
@@ -60,8 +60,9 @@ require_once "../header.php";
         <div class="image">
             <h4 >Image</h4>
             <div >
-                <span><i class="fas fa-images"></i> </span><input type="file" name="img" value="<?php echo $item['image']?>" src =""  alt="">
+                <span><i class="fas fa-images"></i> </span><input type="file"  name="img"  value="../img/<?php echo $item['image']?>"  alt="">
             </div>
+            <?php echo $item['image']?>
         </div>
         <div class="first-name">
             <h4>First Name</h4>
@@ -81,19 +82,25 @@ require_once "../header.php";
         </div>
         <div class="e-mail">
             <h4>Email</h4>
-            <input type="text" name="email" value="<?php echo $item['gmail']?>" id="">
+            <!-- <input type="text" name="email" value="" id=""> -->
+            <textarea name="email" id="" cols="30" rows="10" ><?php echo $item['gmail']?></textarea>
         </div>
         <div class="facebook">
             <h4>Facebook</h4>
-            <input type="text" name="facebook" value="<?php echo $item['facebook']?>" id="">
+            <textarea name="facebook" id="" cols="30" rows="10" ><?php echo $item['facebook']?></textarea>
+            
         </div>
         <div class="instagram">
             <h4>Instagram</h4>
-            <input type="text" name="instagram" value="<?php echo $item['instagram']?>" id="">
+            
+            <textarea name="instagram" id="" cols="30" rows="10" ><?php echo $item['instagram']?></textarea>
+
         </div>
         <div class="github">
             <h4>Github</h4>
-            <input type="text" name="git" value="<?php echo $item['git']?>" id="">
+            
+            <textarea name="git" id="" cols="30" rows="10" ><?php echo $item['git']?></textarea>
+
         </div>
         <div class="skype">
             <h4>Skype</h4>
@@ -101,7 +108,9 @@ require_once "../header.php";
         </div>
         <div class="address">
             <h4>Address</h4>
-            <input type="text" name="address" value="<?php echo $item['address']?>" id="">
+            
+            <textarea name="address" id="" cols="30" rows="10" ><?php echo $item['address']?></textarea>
+
         </div>
         
         

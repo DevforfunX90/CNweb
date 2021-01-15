@@ -12,7 +12,7 @@
             <th>name</th>
             <th>description</th>
             <th>image</th>
-            <th colspan=2>Action</th>
+            <th colspan=3>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -21,17 +21,18 @@
                 <td scope='row'><?php echo $item['id_content']?></td>
                 <td><?php echo $item['name']?></td>
                 <td><?php echo $item['desscription']?></td>
-                <td><?php echo $item['image']?></td>
-                <td><?php echo "<a href='./updateInfor.php?id=$item[id]'>sua</a>" ?></td>
-                <td><?php echo "<a href='./delete.php?id=$item[id]> xoa </a>" ?></td>
-                <td><?php echo "<a href='./detail.php??id=$item[id]'>chi tiet</a>" ?></td>
+                <td><img src="../img/<?php echo $item['image']?>" alt="" srcset=""></td>
+                <td><?php echo "<a href='./updateDoing.php?id=$item[id_content]'>sua</a>" ?></td>
+                <!-- chú ý phần echo thẻ a này ra : cái href là đường dẫn link và nhứo truyền id khóa chính cho nó thì nó mới chạy đc -->
+                <td><?php echo "<a href='./deleteDoing.php?id=$item[id_content]'> xoa </a>" ?></td>
+                
 
             </tr>
         <?php }?>
     </tbody>
 </table>
 
-<a name="" id="" class="btn btn-primary float-right" href="./create.php" role="button">Create</a>
+<a name="" id="" class="btn btn-primary float-right" href="./createDoing.php" role="button">Create</a>
 
 <?php
     require_once "../footer.php";

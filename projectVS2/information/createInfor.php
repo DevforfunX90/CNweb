@@ -9,7 +9,7 @@ $msg ="";
         $img = $_FILES['img']['name'];
         
         // basename show tail jpg or png ,...
-        $target = "img/".basename($img);
+        $target = "../img/".basename($img);
         // get all submit data from the form
         
         $position = $_POST['position'];
@@ -42,16 +42,9 @@ $msg ="";
 
 
 
-
+require_once "../header.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
     <form  method="post" enctype='multipart/form-data'>
     <h1>Information</h1>
     <div class="infor">
@@ -113,5 +106,6 @@ $msg ="";
         <input type="submit" name="submit" value="Upload">
     </div>
     </form>
-</body>
-</html>
+<?php
+    require_once "../footer.php";
+?>
