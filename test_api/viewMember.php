@@ -33,7 +33,7 @@
                 <td><?php echo $item['first_name']?></td>
                 <td><?php echo $item['birthday']?></td>
                 <td><?php echo $item['address']?></td>
-                <td><?php echo "<a href='./information/updateInfor.php?id=$item[id]'>sua</a>" ?></td>
+                <td><?php echo "<a href='./admin/information/updateInfor.php?id=$item[id]'>sua</a>" ?></td>
                 <td><?php echo "<a href='./delete.php?id=$item[id]> xoa </a>" ?></td>
                 <td><?php echo "<a href='./detail.php??id=$item[id]'>chi tiet</a>" ?></td>
 

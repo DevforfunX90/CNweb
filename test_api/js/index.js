@@ -1,17 +1,23 @@
 window.onscroll = function() {
     myFunction();
 };
+let btnUpTop = document.querySelector('#btnUpTop')
 
 function myFunction() {
     if (document.body.scrollTop > 68 || document.documentElement.scrollTop > 68) {
         document.getElementById("sidebar").className = "fixed";
         document.getElementById("content").className = "content";
         document.getElementById("under-sidebar").className = "under-sidebar-after";
+        btnUpTop.style.display = 'block'
     } else {
         document.getElementById("sidebar").className = "sidebar";
         document.getElementById("under-sidebar").className = "under-sidebar";
+        btnUpTop.style.display = 'none'
+
     }
 }
+
+
 // get data infor
 
 function showInfor(first_name, last_name, birthday, address, phone, position, gmail, skype, facebook, git, image) {
@@ -306,32 +312,249 @@ getapi6( "http://localhost/test_api/api/experience/read.php");
 
 //skills
 
+function showSkill(name,percent) {
+    let show = document.querySelector('#boxSkills');
+    show.insertAdjacentHTML(
+        "beforeEnd",
+        `
+        <div class="skill">
+            <span class="name-skill" value="${name}">${name}</span>
+            <div class="progess">
+                <div class="progess-bar">
+                    <span class="percent-skill" value="${percent}">${percent}</span>
+                </div>
+            </div>
+        </div>
+        `)
+}
+
+
+
+async function getapi7(url) {
+    await fetch(url, {
+            method: "GET",
+        })
+        .then((response) => response.json())
+        .then((data1) => {
+            for (const x of data1.data) {
+                let name = x.name  
+                let percent = x.percentage
+                showSkill(name,percent)
+            } 
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
+//Portfolio
+function showPro(name,description,image,link) {
+    let show = document.querySelector('#box-Product');
+    show.insertAdjacentHTML(
+        "beforeEnd",
+        `
+        <div class="proOfMe"  >
+            <div class="imgPro">
+                <a href="${link}">
+                    <img src="./img/${image}" class="imgPro"  alt="" srcset="">
+                </a>
+                
+            </div>
+            <div class="text">
+                <h4 class="nameOfPro">${name}</h4>
+                <div class="typeOfPro">${description}</div>
+            </div>
+        </div>
+        `)
+}
+
+async function getapi9(url) {
+    await fetch(url, {
+            method: "GET",
+        })
+        .then((response) => response.json())
+        .then((data1) => {
+            for (const x of data1.data) {
+                let name = x.name  
+                let description = x.description
+                let image = x.image
+                let link = x.link
+                showPro(name,description,image,link)
+            } 
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
+getapi9( "http://localhost/test_api/api/portfolio/read.php");
+
+//advantage
+function showAd(content) {
+    let show = document.querySelector('#advantage');
+    show.insertAdjacentHTML(
+        "beforeEnd",
+        `
+        <li>${content}</li>
+        `)
+}
+function showDis(content) {
+    let show = document.querySelector('#dis');
+    show.insertAdjacentHTML(
+        "beforeEnd",
+        `
+        <li>${content}</li>
+        `)
+}
+
+async function getapi10(url) {
+    await fetch(url, {
+            method: "GET",
+        })
+        .then((response) => response.json())
+        .then((data1) => {
+            for (const x of data1.data) {
+                let content = x.content  
+                
+                showAd(content)
+            } 
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+async function getapi11(url) {
+    await fetch(url, {
+            method: "GET",
+        })
+        .then((response) => response.json())
+        .then((data1) => {
+            for (const x of data1.data) {
+                let content = x.content  
+                
+                showDis(content)
+            } 
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+}
+
+getapi10( "http://localhost/test_api/api/advantage/read.php");
+getapi11( "http://localhost/test_api/api/disadvantage/read.php");
 
 
 
 
+ window.addEventListener("load",async () => {
+    await getapi7( "http://localhost/test_api/api/skill/read.php");
 
-
-// let NameSkill = document.querySelector(".name-skill");
-// let percentSkill = document.querySelector(".percent-skill");
-// console.log(percentSkill.getAttribute("value"));
-// console.log(NameSkill.getAttribute("value"))
-window.addEventListener("load", () => {
     let progessBars = document.querySelectorAll(".progess-bar");
-    // let values = document.querySelectorAll(".percent-skill")
-    // let Arr=[]
-    
-    // values.forEach((Arr,index)=>{
-    //     Arr.push(values.getAttribute("data-value"))
-    // })
-    // console.log(values.value)
-    console.log("hello")
-    
-    let val = ["80%","70%","90%"];
-    
+    let arr =[]
+//convert the nodeList to an array
+    var nodes =document.querySelectorAll(".percent-skill");
+    var list = arr.slice.call(nodes);
+    var innertext = list.map(function(e) { return arr.push(e.innerText); }).join("\n");
+
     progessBars.forEach((progess, index) => {
-        progess.style.width = val[index]
+        progess.style.width = arr[index]
     })
 
 })
 
+const email = document.querySelector('#email-log')
+const password = document.querySelector('#pass-log')
+const submit = document.querySelector('#submit-log')
+const displayblock = document.querySelector('#block') 
+const loginBlock = document.querySelector('#loginBlock') 
+const admin = document.querySelector('#admin') 
+let arrUser =[]
+submit.addEventListener("click",()=>{
+    
+    async function getapi12(url) {
+        await fetch(url, {
+                method: "GET",
+            })
+            .then((response) => response.json())
+            .then((data1) => {
+                for (const x of data1.data) {
+
+                    if(email.value == x.email && password.value == x.pass){
+                        let user ={
+                            email : email.value,
+                            password : password.value,
+                            role : x.role
+                        }
+                        arrUser.push(user)
+                        localStorage.setItem('User', JSON.stringify(arrUser))
+
+                        displayblock.classList.add("background")
+                        displayblock.classList.remove("hide")
+                        loginBlock.classList.add("hide")
+                        if(x.role === 'admin') {
+                            admin.style.display ='block'
+                        }
+                        else{
+                            admin.style.display ='none'
+
+                        }
+                    }
+                    
+                    if(email.value == '' || password.value == ''){
+                        alert('vui long nhap day du')
+                    }
+                } 
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+    getapi12( "http://localhost/test_api/api/account/read.php");
+})
+
+ window.addEventListener("load",()=> {
+    async function getapi12(url) {
+        await fetch(url, {
+                method: "GET",
+            })
+            .then((response) => response.json())
+            .then((data1) => {
+                for (const x of data1.data) {
+                    let user = JSON.parse(localStorage.getItem('User'));
+                    if(user === null){
+                        break
+                    }
+                    else{
+                        for (let item of user) {
+                            if(item.email == x.email && item.password == x.pass){
+                                displayblock.classList.add("background")
+                                displayblock.classList.remove("hide")
+                                loginBlock.classList.add("hide")
+                            }
+                        }
+                    }
+
+                        
+                    
+                    
+                } 
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+    getapi12( "http://localhost/test_api/api/account/read.php");
+})
+
+
+
+let btnOut = document.querySelector('#btnOut')
+btnOut.addEventListener('click',()=>{
+    localStorage.clear();
+    location.reload();
+})
+
+btnUpTop.addEventListener('click',()=>{
+    document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+})
