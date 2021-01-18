@@ -4,15 +4,11 @@
     $sql = "select * from education";
     $rec = mysqli_query($db, $sql);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Education</title>
 </head>
 <body>
-<table class="table" border=1>
+<table class="table" border=1 style="border-collapse: collapse" align="center">
     <thead>
         <tr>
             
@@ -20,6 +16,9 @@
             <th>Name</th>
             <th>Time</th>
             <th>Description</th>
+            <th><i class="far fa-edit"></i></th>
+            <th><i class="fas fa-trash"></i></th>
+            <th><i class="far fa-plus-square"></i></th>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +35,7 @@
         <?php }?>
     </tbody>
 </table>
-
+<a href="http://localhost/test_api/admin.php" align="center" style="font-size:30px ;"><i class="fas fa-backward"></i>Admin</a>
 <?php
     require_once "../../footer.php";
 ?>

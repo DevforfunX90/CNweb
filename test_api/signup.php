@@ -1,3 +1,36 @@
+<?php
+    require_once "./config/config.php";
+    // if upload button is pressed
+    
+        if (isset($_POST['submit'])) {
+        
+            
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $confirm = $_POST['confirm'];
+            if($password === $confirm){
+                //code sql 
+                $sql ="INSERT INTO account (id,user_name,email,pass,role) VALUE ('1','member','$email','$password','$percentage','member')";
+                
+                //mysqli_query($db,$sql);
+                // $db->query($sql);
+                if(mysqli_query($db,$sql)) {
+                    //echo "successfully added";
+                    header("http://127.0.0.1:5501/index.html");
+                }
+                else{
+                    echo "Error";
+                    
+                }
+            }
+            else{
+                echo "wrong confirm password";
+            }
+            
+        }
+
+?>
+
 <style>
 * 
 {
@@ -158,6 +191,7 @@ input[type="radio"]{
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href ="./style.css">
+    <title>Sign Up</title>
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -173,12 +207,29 @@ input[type="radio"]{
         <div class="slide-controls">
             <input type="radio" name="slier" id="login" checked>
             <input type="radio" name="slier" id="signup" >
-            <label for="login" class="slide login"><a href="http://127.0.0.1:5501/">LogIn</a></label>
+            <label for="login" class="slide login"><a href="http://127.0.0.1:5501/" style="color:#fff">LogIn</a></label>
             <label for="signup" class="slide signup">Signup</label>
             <div class="slide-tab"></div>
         </div>
         <div class="form-inner">
-            <form action ='#' class ="login">
+
+
+            <form action ='#' class ="signup">
+            <div class="field">
+                <input type="text" name="email" placeholder = "Email Address" required>
+            </div>
+            <div class="field">
+                <input type="password" name="password" placeholder = "PassWord" required>
+            </div>
+            <div class="field">
+                <input type="password" name="confirm" placeholder = "Confirm passWord" required>
+            </div>
+            <div class="field">
+                <input type="submit" name="submit" value="Signup">
+            </div>
+            </form>
+
+                        <form action ='#' class ="login">
             <div class="field">
                 <input type="text" placeholder = "Email Address" required>
             </div>
@@ -189,21 +240,6 @@ input[type="radio"]{
                 <input type="submit" value="Login">
             </div>
             <div class="signup-link">Not a member?<a href="#">Signup now</a></div>
-            </form>
-
-            <form action ='#' class ="signup">
-            <div class="field">
-                <input type="text" placeholder = "Email Address" required>
-            </div>
-            <div class="field">
-                <input type="password" placeholder = "PassWord" required>
-            </div>
-            <div class="field">
-                <input type="password" placeholder = "Confirm passWord" required>
-            </div>
-            <div class="field">
-                <input type="submit" value="Signup">
-            </div>
             </form>
         </div>
         </div>

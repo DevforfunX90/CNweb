@@ -6,17 +6,26 @@ require_once "../../config/config.php";
     if (isset($_POST['submit'])) {
     
         $id_info = $_POST['id'];
-        $image = $_POST['image'];
+        
         $link = $_POST['link'];
         $note=$_POST['note'];
+
+        $target_dir    = "../../img/";
+        $target_file   = $target_dir . basename($_FILES["img"]["name"]);
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+        $maxfilesize   = 800000;
+        $allowtypes    = array('jpg', 'png', 'jpeg', 'gif','svg');
+        $img = $_FILES["img"]["name"];
+        move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+
         //code sql 
-        $sql ="INSERT INTO clients (id_clients,id,image,link,note) VALUE ('','$id_info','$image','$link','$note')";
+        $sql ="INSERT INTO clients (id,image,link,note) VALUE ('$id_info','$img','$link','$note')";
         
        //mysqli_query($db,$sql);
        // $db->query($sql);
         if(mysqli_query($db,$sql)) {
             //echo "successfully added";
-            header("Location:http://localhost/test_api/clients/viewCli.php");
+            header("Location:http://localhost/test_api/admin/clients/viewCli.php");
         }
         else{
            echo "Error";
@@ -46,7 +55,7 @@ require_once "../../config/config.php";
         </div>
         <div class="position">
             <h4>Image</h4>
-            <input type="text" name="image" value="" id="">
+            <input type="file" name="img" value="" id="">
         </div>
         <div class="position">
             <h4>Link</h4>

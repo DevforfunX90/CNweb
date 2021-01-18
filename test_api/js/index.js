@@ -1,6 +1,6 @@
-window.onscroll = function() {
-    myFunction();
-};
+// window.onscroll = function() {
+//     myFunction();
+// };
 let btnUpTop = document.querySelector('#btnUpTop')
 
 function myFunction() {
@@ -38,14 +38,16 @@ function showInfor(first_name, last_name, birthday, address, phone, position, gm
                   <a href="${git}" class="social-link"><i class="font-icon fab fa-github"></i></a>
               </div>
           </div>
-          <ul class="contactBlock">
-              <li class="contactBlock-items" title="Birthday"><i class="far fa-calendar"></i>${birthday}</li>
-              <li class="contactBlock-items" title="Address"><i class="fas fa-map-marker-alt"></i>${address}</li>
-              <li class="contactBlock-items" title="E-mail" style="font-size:14px"><i class="far fa-envelope"></i>${gmail}</li>
-              <li class="contactBlock-items" title="Phone"><i class="fas fa-mobile"></i>${phone}</li>
-              <li class="contactBlock-items" title="Skype"><i class="fab fa-skype"></i>${skype}</li>
+          <div class="contactBig">
+            <ul class="contactBlock">
+                <li class="contactBlock-items" title="Birthday"><i class="far fa-calendar"></i>${birthday}</li>
+                <li class="contactBlock-items" title="Address"><i class="fas fa-map-marker-alt"></i>${address}</li>
+                <li class="contactBlock-items" title="E-mail" style="font-size:14px"><i class="far fa-envelope"></i>${gmail}</li>
+                <li class="contactBlock-items" title="Phone"><i class="fas fa-mobile"></i>${phone}</li>
+                <li class="contactBlock-items" title="Skype"><i class="fab fa-skype"></i>${skype}</li>
 
-          </ul>
+            </ul>
+          </div>
       </div>
     `
     );
@@ -468,7 +470,7 @@ const submit = document.querySelector('#submit-log')
 const displayblock = document.querySelector('#block') 
 const loginBlock = document.querySelector('#loginBlock') 
 const admin = document.querySelector('#admin') 
-let arrUser =[]
+let currentUser =[]
 submit.addEventListener("click",()=>{
     
     async function getapi12(url) {
@@ -485,8 +487,9 @@ submit.addEventListener("click",()=>{
                             password : password.value,
                             role : x.role
                         }
-                        arrUser.push(user)
-                        localStorage.setItem('User', JSON.stringify(arrUser))
+                        currentUser.push(user)
+                        console.log(currentUser)
+                        localStorage.setItem('User', JSON.stringify(currentUser))
 
                         displayblock.classList.add("background")
                         displayblock.classList.remove("hide")
@@ -521,6 +524,7 @@ submit.addEventListener("click",()=>{
             .then((data1) => {
                 for (const x of data1.data) {
                     let user = JSON.parse(localStorage.getItem('User'));
+                    
                     if(user === null){
                         break
                     }
@@ -532,11 +536,7 @@ submit.addEventListener("click",()=>{
                                 loginBlock.classList.add("hide")
                             }
                         }
-                    }
-
-                        
-                    
-                    
+                    } 
                 } 
             })
             .catch((error) => {
@@ -550,7 +550,8 @@ submit.addEventListener("click",()=>{
 
 let btnOut = document.querySelector('#btnOut')
 btnOut.addEventListener('click',()=>{
-    localStorage.clear();
+    // window.localStorage.clear();
+    window.localStorage.removeItem('User');
     location.reload();
 })
 

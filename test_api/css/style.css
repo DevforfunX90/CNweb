@@ -62,6 +62,8 @@ h1 h2 h3 h4 h5 h6{
     height: 0.1875rem;
     width: 1.5rem;
     opacity: 0;
+    top: 0;
+    right: 0;
     transition: all 0.2s ease-in-out;
 }
 
@@ -612,4 +614,34 @@ input[type="radio"]{
     li .contactBlock-items {
         font-size: 0.8rem!important;
     }
+    .nav-wrap{
+        display: none;
+    }
+    .wrapper-sticky-parent{
+        flex-direction: column
+    }
+    .contactBig{
+        display: flex;
+        justify-content: center;
+    }
+    ul.contactBlock{
+
+    }
+    .row{
+        flex-direction: column;
+    }
+    div.col-6{
+        width: 100%;
+    }
+    h1.text-head::before{
+        display: none;
+    }
+    .circle-menu{
+        display: block;
+    }
+    .admin{
+        z-index: 100;
+        
+    }
+   
 }

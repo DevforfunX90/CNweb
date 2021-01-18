@@ -78,7 +78,7 @@
                 </a>
             </div>
         </div>
-
+        <a href="http://127.0.0.1:5500/index.html"><div class="admin"><i class="fas fa-home" style="font-size:50px"></i></div></a>
         
     </div>
     <!-- </div> -->

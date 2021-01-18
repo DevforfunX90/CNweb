@@ -4,20 +4,19 @@
     $sql = "select * from defect";
     $rec = mysqli_query($db, $sql);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View_Skills</title>
+
+    <title>Disadvanatages</title>
 </head>
 <body>
-<table class="table" border=1>
+<table class="table" border=1 style="border-collapse: collapse" align="center">
     <thead>
         <tr>
             <th>id</th>
             <th>id_information</th>
             <th>Content</th>
+            <th><i class="far fa-edit"></i></th>
+            <th><i class="fas fa-trash"></i></th>
+            <th><i class="far fa-plus-square"></i></th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +32,7 @@
         <?php }?>
     </tbody>
 </table>
-
+<a href="http://localhost/test_api/admin.php" align="center" style="font-size:30px ;"><i class="fas fa-backward"></i>Admin</a>
 <?php
     require_once "../../footer.php";
 ?>

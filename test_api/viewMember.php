@@ -9,10 +9,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="./img/basic_brand.png">
+    <title>Information</title>
 </head>
 <body>
-<table class="table" border=1>
+<table class="table" border=1 style="border-collapse: collapse" align="center">
     <thead>
         <tr>
             
@@ -33,17 +34,15 @@
                 <td><?php echo $item['first_name']?></td>
                 <td><?php echo $item['birthday']?></td>
                 <td><?php echo $item['address']?></td>
-                <td><?php echo "<a href='./admin/information/updateInfor.php?id=$item[id]'>sua</a>" ?></td>
-                <td><?php echo "<a href='./delete.php?id=$item[id]> xoa </a>" ?></td>
-                <td><?php echo "<a href='./detail.php??id=$item[id]'>chi tiet</a>" ?></td>
-
+                <td><?php echo "<a href='./admin/information/updateInfor.php?id=$item[id]'>update</a>" ?></td>
+                
             </tr>
         <?php }?>
     </tbody>
 </table>
 
-<a name="" id="" class="btn btn-primary float-right" href="./create.php" role="button">Create</a>
-
+<!-- <a name="" id="" class="btn btn-primary float-right" href="./create.php" role="button">Create</a> -->
+<a href="http://localhost/test_api/admin.php" align="center" style="font-size:30px ;"><i class="fas fa-backward"></i>Admin</a>
 <?php
     require_once "./footer.php";
 ?>

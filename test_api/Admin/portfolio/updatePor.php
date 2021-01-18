@@ -1,7 +1,7 @@
 <?php 
     require("../../config/config.php");
     if(isset($_GET['id_portfolio'])){
-        $id = $_GET['id_portfolio'];
+        $id = $_GET['id_portfolio']; 
         $sql_1 =  "SELECT * from portfolio where id_portfolio = {$id}";
         $test = mysqli_query($db, $sql_1);
 
@@ -9,9 +9,18 @@
             // $id_info = $_POST['txtID']; //cái này cần thay đổi theo nhu cầu va mothod $_post['name'] (name là ở dưới html nha trong cái input ấy nó là 1 mothod của input)
             $name = $_POST['name'];
             $description = $_POST['description'];
-            $image = $_POST['image'];
+            
             $link=$_POST['link'];
-            $sql = "UPDATE portfolio SET name='$name',description='$description',image='$image',link='$link' WHERE id_portfolio ='$id' "; 
+
+            $target_dir    = "../../img/";
+            $target_file   = $target_dir . basename($_FILES["img"]["name"]);
+            $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION); //cái này đéo biết nhưng kiểu định dạng đuôi hay sao ấy
+            $maxfilesize   = 800000;// cái này giới hạn kích cỡ file
+            $allowtypes    = array('jpg', 'png', 'jpeg', 'gif','svg');// cái này giới hạn định dạng ảnh
+            $img = $_FILES["img"]["name"];
+            move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+
+            $sql = "UPDATE portfolio SET name='$name',description='$description',image='$img',link='$link' WHERE id_portfolio ='$id' "; 
 
             if(mysqli_query ($db, $sql)){
                 // echo "Inserted successfully ^^";
@@ -48,7 +57,7 @@
             </tr>
             <tr>
                 <td>Image</td>
-                <td><input type="text" name='image' value="<?php echo $item['image']?>"></td>
+                <td><input type="file" name='img' value="<?php echo $item['image']?>"></td>
             </tr>
             <tr>
                 <td>Link</td>

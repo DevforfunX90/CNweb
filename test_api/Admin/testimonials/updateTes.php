@@ -5,14 +5,14 @@
         $id = $_GET['id_testimonials'];
         $sql_1 =  "SELECT * from testimonials where id_testimonials = {$id}";
         $rec = mysqli_query($db, $sql_1);
-        echo '$rec';
+        
         if(isset($_POST['txtSubmit'])){
             // $id_info = $_POST['txtID']; //cái này cần thay đổi theo nhu cầu va mothod $_post['name'] (name là ở dưới html nha trong cái input ấy nó là 1 mothod của input)
             $name = $_POST['name'];
             $note = $_POST['note'];
             
             // code từ dòng 12 -19 là upload file ảnh nếu ko cần thì xóa đi còn cần thì ko đụng tới gọi ra là dùng đc
-            $target_dir    = "../img/";
+            $target_dir    = "../../img/";
             $target_file   = $target_dir . basename($_FILES["img"]["name"]);
             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION); //cái này đéo biết nhưng kiểu định dạng đuôi hay sao ấy
             $maxfilesize   = 800000;// cái này giới hạn kích cỡ file
@@ -20,7 +20,7 @@
             $img = $_FILES["img"]["name"];
             move_uploaded_file($_FILES["img"]["tmp_name"], $target_file); // đây là câu lệnh upload ảnh lên db
 
-            $sql = "UPDATE testimonials SET id='$id_info',name=$name,note='$note',image='$img' WHERE id_testimonials ='$id' "; // ccàn thay câu lệnh này vào các bài khác
+            $sql = "UPDATE testimonials SET name='$name',note='$note',image='$img' WHERE id_testimonials ='$id' "; // ccàn thay câu lệnh này vào các bài khác
 
             if(mysqli_query($db, $sql)){
                 // echo "Inserted successfully ^^";
@@ -45,7 +45,7 @@
 <body>
 <?php while($item =mysqli_fetch_array($rec)) {?>
     <form method="POST" enctype="multipart/form-data">
-        <table>
+        <table align="center">
            <tr>
                 <td>id_information</td>
                 <td><input type="text" name='id' value="<?php echo $item['id']?>"></td>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>Image</td>
-                <td><input type="file" name='image' value="<?php echo $item['image']?>"></td>
+                <td><input type="file" name='img' value="<?php echo $item['image']?>"></td>
             </tr>
             <tr>
                 <td><input type="submit" value='Submit' name='txtSubmit'></td>

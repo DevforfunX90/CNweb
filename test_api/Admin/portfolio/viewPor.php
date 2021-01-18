@@ -4,15 +4,11 @@
     $sql = "select * from portfolio";
     $rec = mysqli_query($db, $sql);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Portfolio</title>
 </head>
 <body>
-<table class="table" border=1>
+<table class="table" border=1 style="border-collapse: collapse" align="center">
     <thead>
         <tr>
             
@@ -21,6 +17,9 @@
             <th>Desscription</th>
             <th>Image</th>
             <th>Link</th>
+            <th><i class="far fa-edit"></i></th>
+            <th><i class="fas fa-trash"></i></th>
+            <th><i class="far fa-plus-square"></i></th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +28,7 @@
                 <td ><?php echo $item['id_portfolio']?></td>
                 <td><?php echo $item['name']?></td>
                 <td><?php echo $item['description']?></td>
-                <td><?php echo $item['image']?></td>
+                <td><img src="../../img/<?php echo $item['image']?>" style="width:200px;"></td>
                 <td><?php echo $item['link']?></td>
                 <td><?php echo "<a href='./updatePor.php?id_portfolio=$item[id_portfolio]'>Update</a>" ?></td>
                 <td><?php echo "<a href='./deletePor.php?id_portfolio=$item[id_portfolio]'>Delete</a>" ?></td>
@@ -38,7 +37,7 @@
         <?php }?>
     </tbody>
 </table>
-
+<a href="http://localhost/test_api/admin.php" align="center" style="font-size:30px ;"><i class="fas fa-backward"></i>Admin</a>
 <?php
     require_once "../../footer.php";
 ?>
